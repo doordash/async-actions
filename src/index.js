@@ -1,4 +1,4 @@
-import { fetch } from 'utils'
+import { fetch } from './utils'
 
 export function createAction(actionType, url, options) {
   return dispatch => {
@@ -8,7 +8,7 @@ export function createAction(actionType, url, options) {
       dispatch({ type: actionType.SUCCESS, response })
       return response
     }).catch(error => {
-      dispatch({ type: actionType.FAIL, response })
+      dispatch({ type: actionType.FAIL, error })
       throw error
     })
   }

@@ -21,15 +21,13 @@ function makeActionType(namespace = '', action = '') {
  */
 function makeActionTypes(namespace, actions = []) {
   if (Array.isArray(actions)) {
-    return actions.reduce((obj, action) => {
-      return {
-        ...obj,
-        [action]: makeAction(namespace, action),
-      }
-    }, {})
-  } else {
-    console.error('Actions must be an array.')
+    return actions.reduce((obj, action) => ({
+      ...obj,
+      [action]: makeActionType(namespace, action),
+    }), {})
   }
+
+  throw new Error('Actions must be an array.')
 }
 
 /**
@@ -44,9 +42,10 @@ function makeActionTypes(namespace, actions = []) {
  */
 function makeAsyncActionType(namespace, action) {
   if (!namespace) {
-    console.warn('Please provide a namespace for your actions')
+    throw new Error('Please provide a namespace for your actions')
   }
-  return makeActions(`${namespace}/${action.toUpperCase()}`, [
+
+  return makeActionTypes(`${namespace}/${action.toUpperCase()}`, [
     'IN_PROGRESS',
     'SUCCESS',
     'FAIL',
@@ -65,15 +64,13 @@ function makeAsyncActionType(namespace, action) {
  */
 function makeAsyncActionTypes(namespace, actions = []) {
   if (Array.isArray(actions)) {
-    return actions.reduce((newActions, action) => {
-      return {
-        ...newActions,
-        [action]: makeAsyncAction(namespace, action),
-      }
-    }, {})
-  } else {
-    console.error('Actions must be an array.')
+    return actions.reduce((newActions, action) => ({
+      ...newActions,
+      [action]: makeAsyncActionType(namespace, action),
+    }), {})
   }
+
+  throw new Error('Actions must be an array.')
 }
 
 export default {

@@ -12,11 +12,11 @@ const defaultOptions = {
 function checkStatus(response) {
   if (response.status >= 200 && response.status < 300) {
     return response
-  } else {
-    const error = new Error(response.statusText)
-    error.response = response
-    throw error
   }
+
+  const error = new Error(response.statusText)
+  error.response = response
+  throw error
 }
 
 function parseJSON(response) {
@@ -46,5 +46,5 @@ export default function fetch(url, options = {}) {
     body,
   }
 
-  return window.fetch(url, formattedOptions).then(checkStatus).then(parseJSON)
+  return window.fetch(formattedURL, formattedOptions).then(checkStatus).then(parseJSON)
 }

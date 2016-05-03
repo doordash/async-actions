@@ -4,7 +4,8 @@
   "description": "Async action creator.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint src"
   },
   "repository": {
     "type": "git",
@@ -17,6 +18,7 @@
   },
   "homepage": "https://github.com/doordash/async-actions#readme",
   "dependencies": {
+    "query-string": "^4.1.0",
     "whatwg-fetch": "^1.0.0"
   },
   "devDependencies": {
@@ -25,6 +27,10 @@
     "babel-eslint": "^6.0.4",
     "babel-loader": "^6.2.4",
     "eslint": "^2.9.0",
+    "eslint-config-airbnb": "^8.0.0",
+    "eslint-plugin-import": "^1.6.1",
+    "eslint-plugin-jsx-a11y": "^1.0.4",
+    "eslint-plugin-react": "^5.0.1",
     "webpack": "^1.13.0"
   }
 }
