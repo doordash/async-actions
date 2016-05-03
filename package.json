@@ -15,5 +15,16 @@
   "bugs": {
     "url": "https://github.com/doordash/async-actions/issues"
   },
-  "homepage": "https://github.com/doordash/async-actions#readme"
+  "homepage": "https://github.com/doordash/async-actions#readme",
+  "dependencies": {
+    "whatwg-fetch": "^1.0.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.8.0",
+    "babel-core": "^6.8.0",
+    "babel-eslint": "^6.0.4",
+    "babel-loader": "^6.2.4",
+    "eslint": "^2.9.0",
+    "webpack": "^1.13.0"
+  }
 }
