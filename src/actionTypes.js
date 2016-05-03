@@ -1,5 +1,5 @@
 /**
- * [makeAction description]
+ * [makeActionType description]
  * @param  {string} namespace - Application namespace, general namespace
  * @param  {string} action - Name of action described
  *
@@ -10,7 +10,7 @@ function makeActionType(namespace = '', action = '') {
 }
 
 /**
- * [makeActions description]
+ * [makeActionTypes description]
  * Produces an object of actions, with the keys being the action
  * name and the values being the actions namespaced
  *
@@ -24,7 +24,7 @@ function makeActionTypes(namespace, actions = []) {
     return actions.reduce((obj, action) => {
       return {
         ...obj,
-        [action]: makeAction(namespace, action),
+        [action]: makeActionType(namespace, action),
       }
     }, {})
   } else {
@@ -46,7 +46,7 @@ function makeAsyncActionType(namespace, action) {
   if (!namespace) {
     console.warn('Please provide a namespace for your actions')
   }
-  return makeActions(`${namespace}/${action.toUpperCase()}`, [
+  return makeActionTypes(`${namespace}/${action.toUpperCase()}`, [
     'IN_PROGRESS',
     'SUCCESS',
     'FAIL',
@@ -68,7 +68,7 @@ function makeAsyncActionTypes(namespace, actions = []) {
     return actions.reduce((newActions, action) => {
       return {
         ...newActions,
-        [action]: makeAsyncAction(namespace, action),
+        [action]: makeAsyncActionType(namespace, action),
       }
     }, {})
   } else {
